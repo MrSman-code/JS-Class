@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .question {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .options {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .option {
+        margin: 5px;
+        padding: 10px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .right-answer {
+        background-color: #8fed8f;
+      }
+
+      .wrong-answer {
+        background-color: #ff8f8f;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        s;
+        var question = "What class does a cat belong to?";
+        var rightAnswer = "Mammalia";
+        var wrongAnswer1 = "Reptilia";
+        var wrongAnswer2 = "Aves";
+
+        document.getElementById("question").innerText = question;
+
+        var options = document.getElementById("options");
+        options.innerHTML = `
+        <li class="option" onclick="checkAnswer(this)">${rightAnswer}</li>
+        <li class="option" onclick="checkAnswer(this)">${wrongAnswer1}</li>
+        <li class="option" onclick="checkAnswer(this)">${wrongAnswer2}</li>
+      `;
+      });
+
+      function checkAnswer(selectedOption) {
+        var options = document.getElementsByClassName("option");
+
+        for (var i = 0; i < options.length; i++) {
+          if (options[i].innerText === rightAnswer) {
+            options[i].classList.add("right-answer");
+          } else {
+            options[i].classList.add("wrong-answer");
+          }
+
+          options[i].onclick = null;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="question" id="question"></div>
+    <ul class="options" id="options"></ul>
+  </body>
+</html>
